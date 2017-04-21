@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Stanford Parser</title>
+    <style type="text/css">
+       div.parserOutput { padding-left: 3em;
+                          padding-top: 1em; padding-bottom: 0px;
+                          margin: 0px; }
+       div.parserOutputMonospace {
+                          padding-top: 1em; padding-bottom: 1em; margin: 0px;
+                          font-family: monospace; padding-left: 3em; }
+       .spacingFree { padding: 0px; margin: 0px; }
+    </style>
+
+    <link href="http://nlp.stanford.edu/nlp.css" rel="stylesheet"
+          type="text/css" />
+
+    <script type="text/javascript">
+    <!--//--><![CDATA[
+    
+
+    function showSample() {
+      query = document.getElementById("query");
+      parserSelect = document.getElementById("parserSelect");
+      query.value = document.getElementById("defaultQuery."+
+                 parserSelect.selectedIndex).value;
+    }
+
+    function handleOnChangeParserSelect() {
+      query = document.getElementById("query");
+      parserSelect = document.getElementById("parserSelect");
+      for (var i = 0; i < 4 ; i++) {
+         defaultQuery = document.getElementById("defaultQuery."+ i);
+         if (query.value == defaultQuery.value) { showSample(); break; }
+      }
+      parseButton = document.getElementById("parseButton");
+      chineseParseButton = document.getElementById("chineseParseButton");
+      if (parserSelect.value == "Chinese") {
+         parseButton.value = chineseParseButton.value;
+      } else {
+         parseButton.value = "Parse";
+      }
+    }
+    <!--//-->]]>
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/parser/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon"
+       href="/parser/favicon.ico" />
+
+  </head>
+
+  <body>
+    
+
+    <h1>Stanford Parser</h1>
+
+    <div style="margin-top: 2em;">
+    <form action="index.jsp" method="post">
+    <div style="width: 410px;">
+    
+       <input type="hidden" name="defaultQuery.0"
+              id="defaultQuery.0"
+              value="هذا الرجل هو سعيد." />
+    
+       <input type="hidden" name="defaultQuery.1"
+              id="defaultQuery.1"
+              value="猴子喜欢吃香蕉。" />
+    
+       <input type="hidden" name="defaultQuery.2"
+              id="defaultQuery.2"
+              value="My dog also likes eating sausage." />
+    
+       <input type="hidden" name="defaultQuery.3"
+              id="defaultQuery.3"
+              value="El reino canta muy bien." />
+    
+        <input type="hidden" name="chineseParseButton"  id="chineseParseButton"
+               value = "&#21078;&#26512; (Parse)" />
+        <div>
+        Please enter a sentence to be parsed: <br/>
+        <textarea name="query" id="query"
+         style="width: 400px; height: 8em"
+         rows="31" cols="7">Juan come carne, pescado de la tienda donde ella trabaja y el perro con orejas largas es bueno, ella sabe de todos nosotros</textarea>
+        </div>
+        <div style="float: left">
+        Language:
+        <select name="parserSelect" id="parserSelect"
+         onchange="handleOnChangeParserSelect();" >
+        
+           <option value="Arabic" >Arabic</option>
+        
+           <option value="Chinese" >Chinese</option>
+        
+           <option value="English" >English</option>
+        
+           <option value="Spanish" selected="selected">Spanish</option>
+        
+        </select>
+        </div>
+
+        <div style="float: left; padding-left: 2em;">
+        <a href="#sample" onclick="showSample();">Sample Sentence</a>
+        </div>
+
+        <div style="float: right">
+        
+           <input type="submit" value="Parse" name="parse" id="parseButton"/>
+        
+        </div>
+      </div>
+    </form>
+    </div>
+
+    <div style="clear: left; margin-top: 3em">
+    
+
+      <h3>Your query</h3>
+      <div class="parserOutput"><em>Juan come carne, pescado de la tienda donde ella trabaja y el perro con orejas largas es bueno, ella sabe de todos nosotros</em></div>
+
+      
+          <h3>Tagging</h3>
+          <div class="parserOutputMonospace">
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 Juan/np00000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 come/vmsp000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 carne/nc0s000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 ,/fc</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 pescado/vmp0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 de/sp000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 la/da0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 tienda/nc0s000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 donde/pr000000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 ella/pp000000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 trabaja/vmip000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 y/cc</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 el/da0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 perro/nc0s000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 con/sp000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 orejas/nc0p000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 largas/aq0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 es/vsip000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 bueno/aq0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 ,/fc</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 ella/pp000000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 sabe/vmip000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 de/sp000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 todos/di0000</div>
+          
+                 <div style="padding-right: 1em; float: left; white-space: nowrap;">
+                 nosotros/pp000000</div>
+          
+          </div>
+
+          <div style="clear: left"> </div>
+          <h3>Parse</h3>
+          <div class="parserOutput">
+          <pre id="parse" class="spacingFree">(ROOT
+  (sentence
+    (S
+      (sn
+        (grup.nom (np00000 Juan)))
+      (grup.verb (vmsp000 come))
+      (sn
+        (grup.nom (nc0s000 carne))))
+    (fc ,)
+    (S
+      (grup.verb (vmp0000 pescado))
+      (sp
+        (prep (sp000 de))
+        (sn
+          (spec (da0000 la))
+          (grup.nom (nc0s000 tienda)
+            (S
+              (relatiu (pr000000 donde))
+              (sn
+                (grup.nom (pp000000 ella)))
+              (grup.verb (vmip000 trabaja)))))))
+    (conj (cc y))
+    (S
+      (S
+        (sn
+          (spec (da0000 el))
+          (grup.nom (nc0s000 perro)
+            (sp
+              (prep (sp000 con))
+              (sn
+                (grup.nom (nc0p000 orejas)
+                  (s.a
+                    (grup.a (aq0000 largas))))))))
+        (grup.verb (vsip000 es))
+        (s.a
+          (grup.a (aq0000 bueno)))
+        (fc ,))
+      (sn
+        (grup.nom (pp000000 ella)))
+      (grup.verb (vmip000 sabe))
+      (sp
+        (prep (sp000 de))
+        (sn
+          (spec (di0000 todos))
+          (grup.nom (pp000000 nosotros)))))))</pre>
+          </div>
+
+	        
+
+          <h3>Statistics</h3>
+
+          <br />Tokens: 25 <br /> Time: 0.452 s <br />
+
+        
+  </div>
+
+  
+
+  <p>
+    <em><a href="http://nlp.stanford.edu/software/lex-parser.shtml">Back to parser home</a></em>
+    <br/>
+    <em>Last updated 2015-05-18</em>
+  </p>
+
+  <p style="text-align: right">
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        style="border: 0px"
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+  </p>
+  </body>
+</html>
